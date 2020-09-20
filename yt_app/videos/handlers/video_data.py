@@ -15,7 +15,10 @@ class VideoDataFetchHandler:
     query = "football"
 
     def fetch_and_insert_video_data(self) -> None:
+        print('running scheduler at: ', arrow.utcnow().datetime)
         api_key = self.fetch_api_key()
+        if not api_key:
+            raise InterruptedError('No api key present, read README')
         self.insert_yt_data_into_db(api_key)
 
     def fetch_api_key(self) -> str:
@@ -23,7 +26,6 @@ class VideoDataFetchHandler:
 
     def insert_yt_data_into_db(self, api_key: str) -> None:
         try:
-            import ipdb; ipdb.set_trace()
             yt_data = self.fetch_youtube_api_response(api_key)
             if yt_data:
                 self.get_or_create_yt_data(yt_data)
@@ -33,7 +35,6 @@ class VideoDataFetchHandler:
             print(e)
 
     def fetch_youtube_api_response(self, api_key: str) -> dict:
-        # TODO change this with the current date.
         url = YOUTUBE_API_URL.format(
             self.query,
             f"{arrow.utcnow().shift(days=-1).format('YYYY-MM-DDTHH:mm:ss')}Z",
