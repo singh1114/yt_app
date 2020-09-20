@@ -1,4 +1,5 @@
 import arrow
+import os
 import requests
 
 from django.core.exceptions import ObjectDoesNotExist
@@ -10,7 +11,7 @@ from videos.models import VideoData
 
 
 class VideoDataFetchHandler:
-    api_key = "AIzaSyBeE012Vo5cfSLoB3Uox2iPJaUpxAlmqAk"
+    api_key = os.environ.get('YT_API_KEY')
     query = "football"
 
     def fetch_and_insert_video_data(self) -> None:
