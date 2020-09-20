@@ -81,5 +81,6 @@ class VideoDataFetchHandler:
             'video_id': video.get('id').get('videoId'),
             'title': video.get('snippet').get('title'),
             'description': video.get('snippet').get('description'),
-            'published_at': arrow.get(video.get('snippet').get('publishedAt'))
+            'published_at': arrow.get(
+                video.get('snippet').get('publishedAt')).datetime
         }
