@@ -9,8 +9,4 @@ from videos.handlers.video_data import VideoDataFetchHandler
 
 
 def video_scheduler():
-    should_run = True
-    while should_run:
-        interval = 10
-        should_run = VideoDataFetchHandler().fetch_and_insert_video_data()
-        time.sleep(interval)
+    VideoDataFetchHandler().fetch_and_insert_video_data()

@@ -1,3 +1,11 @@
-from django.shortcuts import render
+from rest_framework.views import APIView
 
-# Create your views here.
+
+class VideoDetailAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        pass
+
+
+class VideoSearchAPIView(APIView):
+    def get(self, request, *args, **kwargs):
+        pass
