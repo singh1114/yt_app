@@ -1,22 +1,16 @@
 # yt_app
 
-1. Export the secret key.
-  ```
-  export SECRET_KEY=something
-  ```
-2. Export the YouTube API Key.
-  ```
-  export YT_API_KEY=something
-  ```
-3. Install requirements
-  ```
-  pip install requirements.txt
-  ```
-4. Migrate DB changes (From the directory having manage.py)
-  ```
-  python manage.py migrate
-  ```
-5. APIs
+1. Build docker file
+```
+docker build -t videos .
+```
+
+2. Run docker
+```
+docker run --env SECRET_KEY=something --env YT_API_KEY=AIzaSyDGTi-XXXXXzX0DEv4 -p 8000:8000 -it videos
+```
+
+3. APIs
 
 Search API:
   - Default page size is 10
