@@ -5,7 +5,7 @@ from base.models import AbstractBaseModel
 
 class VideoData(AbstractBaseModel):
     video_id = models.CharField(
-        max_length=50, blank=True, null=True, unique=True)
+        max_length=50, unique=True)
     # TODO optimize the max_length by researching about total title size
     title = models.CharField(max_length=2000, null=True)
     # TODO optimize the max_length by researching about total description size

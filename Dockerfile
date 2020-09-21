@@ -6,7 +6,7 @@ RUN apt-get update -y && \
 # Added separately so that layers get cached
 ARG BUILD_DEPS='apt-utils unzip cmake build-essential pkg-config  build-essential'
 
-COPY requirements.txt .
+COPY yt_app/requirements.txt .
 RUN apt-get install -y ${BUILD_DEPS} && \
     pip install -r requirements.txt && \
     apt-get purge -y --auto-remove $BUILD_DEPS
@@ -21,5 +21,5 @@ EXPOSE 8000
 
 # entrypoint
 ENTRYPOINT ["python"]
-CMD ["manage.py", "migrate"]
-CMD ["manage.py", "runserver", "0.0.0.0:8000"]
+CMD ["yt_app/manage.py", "migrate"]
+CMD ["yt_app/manage.py", "runserver", "0.0.0.0:8000"]
